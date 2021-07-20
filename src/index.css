@@ -1,0 +1,219 @@
+#root {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding-top: 20px;
+    font-family: 'Comfortaa', cursive;
+}
+
+.players > div {
+    display: inline-block;
+    border: 3px solid wheat;
+    font-size: 30px;
+    padding: 5px 10px;
+    min-width: 250px;
+    margin: 0 0 10px 0;
+    cursor: pointer;
+}
+
+.game-board {
+    display: inline-block;
+    border: 10px solid #008b8b;
+    position: relative;
+}
+
+.game-status {
+    display: block;
+    padding: 5px;
+    background-color: #fff;
+    border: 5px solid #008b8b;
+    width: 480px;
+    max-width: 500px;
+    font-size: 30px;
+    position: relative;
+    top: 15px;
+    z-index: 3;
+    margin: 0 auto;
+    margin-bottom: 20px; 
+    height: 20px;
+    padding-bottom: 15px;
+}
+
+.time-travel {
+    /* max-width: 660px; */
+    display: block;
+    /* margin: 0 auto; */
+    text-align: right;
+    width: 569px;
+    /* margin-left: 29%; */
+    margin: auto;
+    /* border: 5px solid #deb887;
+    background-color: yellow; */
+}
+
+.undo {
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 0;
+    background-color: #bab7b7;
+    box-shadow: none;
+    border: 3px solid #008b8b;
+    margin: 5px;
+    cursor: pointer;
+
+}
+
+.undo.disabled {
+    cursor: not-allowed;
+}
+
+.you{
+    color: rgb(240, 102, 125);
+}
+.computer{
+    color: sandybrown;
+}
+.score{
+    cursor: default;
+    background-color: white;
+}
+
+.board-col {
+    display: inline-block;
+    max-width: 60px;
+}
+
+.square {
+    background: no-repeat #fff;
+    border: none;
+    height: 60px;
+    width: 60px;
+    padding: 5px;
+    background-origin: content-box;
+    background-size: contain;
+}
+
+.isActive {
+    background-color: wheat;
+}
+
+.square.movable.player1-move {
+    background-color: rgb(190, 245, 245);
+    opacity: 0.6;
+}
+
+.square.movable.player2-move {
+    background-color: rgb(240, 245, 170);
+}
+
+.square.player1, .square.player2, .square.movable {
+    cursor: pointer;
+}
+
+.square.black {
+    background-color: #bab7b7;
+}
+
+.square.player1 {
+    padding: 5px;
+    background-color: rgb(240, 102, 125);
+    border-radius: 100px;
+}
+
+.square.player2 {
+    padding: 5px;
+    background-color: sandybrown;
+    border-radius: 100px;
+}
+.square.player1.king {
+    opacity: 0.7;
+    border: 3px dotted rgb(250, 65, 96);
+}
+
+.square.player2.king {
+    opacity: 0.7;
+    border: 3px dotted #ec7816;
+}
+
+.pop {
+    position: fixed;
+    color: #444;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+.pop .internal {
+    position: relative;
+    width: 300px;
+    margin: 0 auto;
+    min-height: 50px;
+    margin-top: 133px;
+    padding: 50px;
+    text-align: left;
+    border-radius: 0;
+    background-color: #fff;
+    box-shadow: none;
+    border: 3px solid #deb887;
+  }
+
+  .pop .internal .close {
+    padding: 0 5px;
+    position: absolute;
+    right: 0;
+    width: auto;
+    top: 0;
+    background-color: #fff;
+    border-left: 3px solid #deb887;
+    border-bottom: 3px solid #deb887;
+    border-right: none;
+    border-top: none;  
+  }
+
+@media only screen and (max-width: 700px) {
+
+    .board-col {
+        max-width: 60px;
+    }
+    .square {
+        height: 60px;
+        width: 60px;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+
+    .board-col {
+        max-width: 50px;
+    }
+    .square {
+        height: 50px;
+        width: 50px;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+
+    .board-col {
+        max-width: 40px;
+    }
+    .square {
+        height: 40px;
+        width: 40px;
+    }
+}
+
+@media only screen and (max-width: 370px) {
+
+    .board-col {
+        max-width: 35px;
+    }
+    .square {
+        height: 35px;
+        width: 35px;
+    }
+}
