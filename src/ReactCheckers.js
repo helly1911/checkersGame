@@ -1,6 +1,6 @@
 import * as utils from './utils.js';
 
-export class ReactCheckers {
+class ReactCheckers {
 
     constructor(columns) {
         this.columns = columns;
@@ -28,6 +28,7 @@ export class ReactCheckers {
         return corners;
     }
 
+    // check possible moves for checkers
     getMoves(boardState, coordinates, isKing = false, hasJumped = false) {
 
         if (boardState[coordinates] === null) {
@@ -95,6 +96,7 @@ export class ReactCheckers {
 
     }
     
+    // to move checkers appropriately
     movePiece(coordinates, state) {
         let currentState  = Object.assign({}, state.history[state.stepNumber]);
         let boardState = Object.assign({}, currentState.boardState);
@@ -165,11 +167,10 @@ export class ReactCheckers {
         stateOut.hasJumped = hasJumped === true ? player : null;
         stateOut.winner = this.evaluateWinner(boardState);
 
-        // console.log(stateOut)
-
         return stateOut;
     }
 
+    // to checke wether a checker become king or not
     shouldKing(movingPiece, coordinates) {
 
         if (movingPiece.isKing === true) {
@@ -182,6 +183,7 @@ export class ReactCheckers {
         return ( (row === 1 && player === 'player1') || (row === 8 && player === 'player2') );
     }
 
+    // evaluate who is winner
     evaluateWinner(boardState) {
 
         let player1Pieces = 0;
@@ -207,10 +209,7 @@ export class ReactCheckers {
                 player2Moves += moveCount;
             }
         }
-        // if (player1Pieces>0 && player2Pieces>1){
-        //     return [player1Pieces,player2Pieces];
-        // }
-
+    
         if (player1Pieces === 0 ) {
             return 'player2pieces';
         }
@@ -230,46 +229,29 @@ export class ReactCheckers {
         return null;
     }
 
-    evaluateWinner1(boardState) {
+    // to display number of checkers on board
+    displayCheckers(boardState) {
 
+        let player1Checkers = 0;
+        let computerCheckers = 0;
         
-        let player1Pieces = 0;
-        let player1Moves  = 0;
-
-        let player2Pieces = 0;
-        let player2Moves  = 0;
-
-        
-
         for (let coordinates in boardState) {
             if (!boardState.hasOwnProperty(coordinates) || boardState[coordinates] === null) {
                 continue;
             }
 
-            const movesData = this.getMoves(boardState, coordinates, boardState[coordinates].isKing, false);
-            const moveCount = movesData[0].length;
-
             if (boardState[coordinates].player === 'player1') {
-                ++player1Pieces;
-                player1Moves += moveCount;
-                
-
-            } else {
-                ++player2Pieces;
-                player2Moves += moveCount;
+                ++player1Checkers;
+            } 
+            else {
+                ++computerCheckers;
             }
         }
-        console.log(player1Moves)
-        console.log(player2Moves)
 
-        if (player1Pieces >0){
-            return [player1Pieces,player2Pieces]
+        if (player1Checkers >0){
+            return [player1Checkers,computerCheckers]
         }
     }
-
-        
-
-    
-
-    
 }
+
+export default ReactCheckers;

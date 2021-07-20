@@ -1,6 +1,6 @@
-import {ReactCheckers} from './ReactCheckers.js';
+import ReactCheckers from './ReactCheckers.js';
 
-export class Opponent extends ReactCheckers {
+class Opponent extends ReactCheckers {
 
     getComputerMoves(boardState, player) {
         const self = this;
@@ -141,3 +141,5 @@ export class Opponent extends ReactCheckers {
         return out;
     }
 }
+
+export default Opponent;
